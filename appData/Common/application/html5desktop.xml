@@ -1,0 +1,11 @@
+<tests>
+
+    <Html5DesktopTest>
+        <capture/>
+    </Html5DesktopTest>
+
+    <Html5DesktopLogin>
+        <capture/>
+    </Html5DesktopLogin>
+
+</tests>

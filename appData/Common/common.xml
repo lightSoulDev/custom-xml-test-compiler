@@ -1,0 +1,71 @@
+<tests>
+
+<!-- ======================================= LOADING PAGES ======================================= -->
+
+    <LoadLoaderPage>
+        <wait consoleFlags="Scripts Loaded" />
+        <stop />
+        <init />
+        <callFunction element="progress" code="setterValue(0)" />
+        <capture />
+        <callFunction element="progress" code="setterValue(_obj.getterMaximum())" />
+        <capture />
+    </LoadLoaderPage>
+
+    <LoadLoginPage>
+        <wait consoleFlags="Scripts Loaded" />
+        <init />
+        <wait element="*[class=LoginPage]" />
+        <waitWhileExists element="bgLauncher" />
+    </LoadLoginPage>
+
+<!-- ======================================= LOGIN ======================================= -->
+
+    <LoginPageComponents>
+        <test id="LoadLoaderPage" />
+        <refresh />
+        <test id="LoadLoginPage" />
+        <rapid>
+            <has element="buttonAccount" />
+            <has element="inputAcc" />
+            <has element="inputPass" />
+            <has element="*[action=login]" />
+            <capture />
+            <test id="Langs" />
+        </rapid>
+    </LoginPageComponents>
+
+    <Langs>
+        <var name="HasCmbLocales" isElementOnStage="comboboxLocales[class=LocaleBox]" />
+        <print name="HasCmbLocales" />
+        <if condition="{{HasCmbLocales}} == true">
+            <var name="LocalesVisible" element="comboboxLocales[class=LocaleBox]" param="visible" />
+        </if>
+
+        <if condition="{{HasCmbLocales}} == true and {{LocalesVisible}} == true">
+            <click element="comboboxLocales[class=LocaleBox]" />
+            <capture />
+            <click x="0" y="0" />
+        </if>
+    </Langs>
+    
+    <Login>
+        <test id="LoginPageComponents" />
+
+        <click element="inputAcc" />
+        <type element="inputAcc" text="{{_login}}" />
+        <click element="inputPass" />
+        <type element="inputPass" text="{{_pass}}" />
+        <wait time="0.2" />
+        <capture />
+        <click element="*[action=login]" />
+
+        <wait element="*[class=LobbyPage]" />
+        <waitWhileExists element="*[class=WaitingScreen]" />
+
+        <var name="LoginText" element="nameLabel" param="_text" />
+
+        <assert that="{{LoginText}} == {{_login}}" />
+    </Login>
+    
+</tests>

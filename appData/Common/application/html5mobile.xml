@@ -1,0 +1,13 @@
+<tests>
+
+    <Html5MobileTest>
+        <capture/>
+    </Html5MobileTest>
+
+    <Logout>
+        <logut/>
+        <test id="Html5MobileTest"/>
+        <test id="common/Loader"/>
+    </Logout>
+
+</tests>

@@ -1,0 +1,40 @@
+<tests>
+    <!-- Импортирует декларации тестов из модулей -->
+    <import module="common/application/html5desktop"/>
+    <!-- ======================================== -->
+
+    <!-- ===== Декларация локальных тестов ====== -->
+    <SomeAnotherTest>
+        <capture/>
+    </SomeAnotherTest>
+
+    <LocalTest>
+        <capture/>
+        <test id="SomeAnotherTest"/>
+    </LocalTest>
+
+    <LocalModuleTest>
+        <capture/>
+        <test id="common/Login"/>
+        <rapid>
+            <test id="common/Logout"/>
+        </rapid>
+    </LocalModuleTest>
+
+    <Html5DesktopTest>
+        <nocapture/>
+    </Html5DesktopTest>
+    <!-- ======================================== -->
+
+    <!-- ========== Исполняемые Тесты =========== -->
+
+    <test id="LocalTest"/>
+    <test id="Html5DesktopTest"/>
+
+    <test id="common/Login"/>
+    <test id="common/Loader"/>
+
+    <test id="LocalModuleTest"/>
+    <!-- ======================================== -->
+
+</tests>
