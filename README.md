@@ -1,3 +1,3 @@
-# pixi-xml-test-compiler
+# custom-xml-test-compiler
 
 Xml config compiler for my Canvas UI testing frameworks
